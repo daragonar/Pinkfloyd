@@ -1,4 +1,4 @@
-package pizza;
+package deportes;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,7 +15,7 @@ public class Aplicacion implements WebApplicationInitializer{
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		// TODO Auto-generated method stub
 		AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
-		webApplicationContext.setConfigLocation("pizzas.config");
+		webApplicationContext.setConfigLocation("deportes.config");
 		
 		Dynamic appServlet = servletContext.addServlet("appServlet", new DispatcherServlet(webApplicationContext));
 		appServlet.setLoadOnStartup(1);
