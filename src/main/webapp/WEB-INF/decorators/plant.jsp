@@ -28,16 +28,16 @@
 		<a class="navbar-brand" href="#">CSD</a>
 		<ul class="nav navbar-nav navbar-right">
 			<li class="active">
-				<a href="/Pinkfloyd">Home</a>
+				<a href="<c:url value="/" />">Home</a>
 			</li>
 			<li>
-				<a href="federaciones">Federaciones</a>
+				<a href="<c:url value="/federaciones" />">Federaciones</a>
 			</li>
 			<li>
-				<a href="equipos">Equipos</a>
-			</li>
+				<a href="<c:url value="/equipos" />">Equipos</a>
+			</li>	
 			<li>
-				<a href="jugadores">Jugadores</a>
+				<a href="<c:url value="/jugadores" />">Jugadores</a>
 			</li>
 		</ul>
 	</div>

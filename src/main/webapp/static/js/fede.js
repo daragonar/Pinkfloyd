@@ -6,11 +6,10 @@ $(document).ready(function(){
 		$(".modal-body #fedenombre").text( nomfede);
 		});
 	
-	
 	$(".btn-borrar").on("click",function(){
 		var id=$(".modal-body #Fede").val();
 		$.ajax({
-			url : "federaciones/" + id,
+			url : "/Pinkfloyd/federaciones/" + id,
 			type : 'DELETE',
 			success : function(result) {
 				$('tr[data-id="' + id + '"]').remove();

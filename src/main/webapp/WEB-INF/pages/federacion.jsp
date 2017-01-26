@@ -8,7 +8,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript" src="<c:url value="/static/js/fede.js" />"></script>
+<script type="text/javascript"
+	src="<c:url value="/static/js/fede.js" />"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Federacion</title>
 </head>
@@ -21,6 +22,7 @@
 				<th>ID</th>
 				<th>Nombre</th>
 				<th>Pais</th>
+				<th>Ver equipos</th>
 				<th>Editar</th>
 				<th>Borrar</th>
 			</tr>
@@ -31,9 +33,12 @@
 					<td>${federacion.id}</td>
 					<td>${federacion.nombre}</td>
 					<td>${federacion.pais}</td>
+					<td><a href="<c:url value="/federaciones/federacion/${federacion.id}" />">Ver</a></td>
+
 					<td><a id="editar-fede" class="btn btn-warning">Editar</a></td>
-					<td><a class="btn btn-danger open-Modal" data-nombre="${federacion.nombre}" data-id="${federacion.id}"  data-toggle="modal"
-						href='#modal-borrar'>Borrar</a></td>
+					<td><a class="btn btn-danger open-Modal"
+						data-nombre="${federacion.nombre}" data-id="${federacion.id}"
+						data-toggle="modal" href='#modal-borrar'>Borrar</a></td>
 				</tr>
 			</c:forEach>
 			<tr>
@@ -53,7 +58,8 @@
 					<h4 class="modal-title">Añadir Federacion</h4>
 				</div>
 				<div class="modal-body">
-					<form method="POST" role="form">
+					<form method="POST" action="<c:url value="/federaciones"/>"
+						role="form">
 						<legend>Federacion</legend>
 
 						<div class="form-group">
@@ -67,9 +73,6 @@
 								name="pais">
 						</div>
 						<input type="hidden" id="id-fede" name="id">
-
-					
-
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -82,7 +85,7 @@
 
 
 	<!-- Empieza diversion 2 -->
- 
+
 	<div class="modal fade" id="modal-borrar">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -92,11 +95,14 @@
 					<h4 class="modal-title">Estas Seguro??</h4>
 				</div>
 				<div class="modal-body">
-				¿Estas seguro de borrar esta federación? <input type="hidden" name="" id="Fede" class="form-control" value=""> <strong><span id="fedenombre"></span></strong>
+					¿Estas seguro de borrar esta federación? <input type="hidden"
+						name="" id="Fede" class="form-control" value=""> <strong><span
+						id="fedenombre"></span></strong>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-borrar" data-dismiss="modal">Si</button>
+					<button type="button" class="btn btn-primary btn-borrar"
+						data-dismiss="modal">Si</button>
 				</div>
 			</div>
 		</div>
