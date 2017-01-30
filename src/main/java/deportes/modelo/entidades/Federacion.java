@@ -23,8 +23,18 @@ public class Federacion {
 	private String nombre;
 	@NotNull
 	@NotEmpty
-	private String pais;
+	private String pais;	
+
+	private String imagen;
 	
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
 	@OneToMany(fetch = FetchType.EAGER)
 	private Set<Equipo> equipo;
 
@@ -66,6 +76,7 @@ public class Federacion {
 		int result = 1;
 		result = prime * result + ((equipo == null) ? 0 : equipo.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((imagen == null) ? 0 : imagen.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((pais == null) ? 0 : pais.hashCode());
 		return result;
@@ -90,6 +101,11 @@ public class Federacion {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (imagen == null) {
+			if (other.imagen != null)
+				return false;
+		} else if (!imagen.equals(other.imagen))
+			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
 				return false;
@@ -102,5 +118,7 @@ public class Federacion {
 			return false;
 		return true;
 	}
+	
+	
 	
 }

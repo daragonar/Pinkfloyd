@@ -13,7 +13,27 @@
 <title>Jugadores</title>
 </head>
 <body>
+<c:if test="${not empty equipoUnico}">
+<div class="container">
+			<div class="row">
+				<div class="media">
+					<a class="pull-left" href="#"> 
+					<img class="media-object" src="${equipoUnico.imagen} " alt="Image" width="240" height="240">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading">${equipoUnico.nombre}</h4>
+						<p>${equipoUnico.estadio}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+</c:if>
 
+<c:if test="${not empty pichichi}">
+<h3>Hay pichichi</h3>
+<p>${pichichi.goles} - ${pichichi.nombre}</p>
+
+</c:if>
 	<h3>Jugadores</h3>
 	<table class="table table-hover">
 		<thead>
@@ -31,11 +51,11 @@
 			<c:forEach items="${jugadores}" var="jugador">
 				<tr data-id="${jugador.id}">
 					<td>${jugador.id}</td>
-					<td>${jugador.nombre}</td>
+					<td><a href="<c:url value="/jugadores/jugador/${jugador.id}" />">${jugador.nombre}</a></td>
 					<td>${jugador.edad}</td>
 					<td>${jugador.goles}</td>
-					<td>${jugador.equi.nombre}</td>
-					<td><a id="editar-juga" class="btn btn-warning">Editar</a></td>
+					<td><a href="<c:url value="/equipos/equipo/${jugador.equi.id}" />">${jugador.equi.nombre}</a></td>
+					<td><a class="editar-juga btn btn-warning">Editar</a></td>
 					<td><a class="btn btn-danger open-Modal"
 						data-nombre="${jugador.nombre}" data-id="${jugador.id}"
 						data-toggle="modal" href='#modal-borrar'>Borrar</a></td>
@@ -43,7 +63,7 @@
 			</c:forEach>
 			<tr>
 				<td colspan="7"><a class="btn btn-primary" data-toggle="modal"
-					href='#modal-equipo'>Añadir Equipo</a></td>
+					href='#modal-jugador'>Añadir Equipo</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -52,7 +72,7 @@
 	
 	<!-- empiezan la diversion -->
 
-	<div class="modal fade" id="modal-equipo">
+	<div class="modal fade" id="modal-jugador">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -75,7 +95,11 @@
 								class="form-control" id="edad-jugador" name="edad"
 								placeholder="Input field">
 						</div>
-
+<div class="form-group">
+							<label for="">imagen</label> <input type="url"
+								class="form-control" id="imagen-jugador" placeholder="Imagen"
+								name="imagen">
+						</div>
 						<div class="form-group">
 							<label for="Goles">Goles</label> <input type="number"
 								class="form-control" id="goles-jugador" name="goles"
@@ -86,7 +110,7 @@
 
 						<div class="form-group">
 							<label for="Equipo">Equipo</label> <select name="equi"
-								id="input" class="form-control">
+								id="equipo" class="form-control">
 								<c:forEach items="${equipos}" var="equipo">
 
 									<option value="${equipo.id}">${equipo.nombre}</option>

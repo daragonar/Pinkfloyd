@@ -11,5 +11,6 @@ public interface RepositorioJugador extends JpaRepository<Jugador, Long> {
 
 	Iterable<Jugador> findAllByEqui(Equipo equi);
 
+	Jugador findFirstByEquiOrderByGolesDesc(Equipo equi);
 
 }

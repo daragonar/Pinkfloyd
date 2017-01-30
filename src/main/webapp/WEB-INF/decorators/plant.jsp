@@ -6,6 +6,10 @@
 
 <html>
  <head>
+ <link rel="shortcut icon" href="<c:url value="static/img/favicon.ico" />" type="image/x-icon">
+<link rel="icon" href='<c:url value="static/img/favicon.ico" />' type="image/x-icon">
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 
  <title><sitemesh:write property='title'/></title>
  
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

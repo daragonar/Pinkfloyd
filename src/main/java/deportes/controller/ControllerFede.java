@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import deportes.modelo.entidades.Equipo;
 import deportes.modelo.entidades.Federacion;
-import deportes.modelo.entidades.Jugador;
 import deportes.modelo.repositorio.RepositorioEquipo;
 import deportes.modelo.repositorio.RepositorioFederacion;
+
 
 @Controller
 @RequestMapping("/federaciones")
@@ -40,6 +40,7 @@ public class ControllerFede {
 		Iterable<Equipo> equi= repoeq.findAllByFede(fede);
 		model.addAttribute("federac", repofe.findAll());
 		model.addAttribute("equipos", equi);
+		model.addAttribute("federacionUnica",repofe.findOne(id));
 		return "pages/equipo";
 	}
 
@@ -59,5 +60,13 @@ public class ControllerFede {
 		} catch (Exception ex) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/{id}")
+	@ResponseBody
+	public Federacion buscarFede(@PathVariable Long id)
+	{
+		Federacion fede=repofe.findOne(id);
+		return fede;
 	}
 }

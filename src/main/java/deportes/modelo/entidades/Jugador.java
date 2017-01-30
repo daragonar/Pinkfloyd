@@ -27,6 +27,16 @@ public class Jugador {
 	@NotNull
 	private int goles;
 
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	private String imagen;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "equi", nullable = false)
@@ -80,6 +90,7 @@ public class Jugador {
 		result = prime * result + ((equi == null) ? 0 : equi.hashCode());
 		result = prime * result + goles;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((imagen == null) ? 0 : imagen.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		return result;
 	}
@@ -107,6 +118,11 @@ public class Jugador {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (imagen == null) {
+			if (other.imagen != null)
+				return false;
+		} else if (!imagen.equals(other.imagen))
+			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
 				return false;
@@ -115,7 +131,7 @@ public class Jugador {
 		return true;
 	}
 
-	
+
 }
 
 

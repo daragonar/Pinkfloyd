@@ -16,4 +16,20 @@ $(document).ready(function(){
 			}
 		});
 	})
-})
+	$(".editar-fede").on('click', function() {
+		var id = $(this).parents('tr').data('id');
+		var url = '/Pinkfloyd/federaciones/'+id;
+		console.log("hola");
+		
+		$.get(url)
+			.done(function(federacion) {
+				$('.modal-title').text("Editar Federacion");
+				$('#nombre-fede').val(federacion.nombre);
+				$('#pais-fede').val(federacion.pais);
+				$('#imagen-fede').val(federacion.imagen)
+				$('#id-fede').val(federacion.id);
+
+				$('#modal-federacion').modal('show');
+			})
+	})
+}) 

@@ -16,4 +16,24 @@ $(document).ready(function(){
 			}
 		});
 	})
+	
+	
+	$(".editar-equi").on('click', function() {
+		var id = $(this).parents('tr').data('id');
+		var url = '/Pinkfloyd/equipos/'+id;
+		console.log("hola");
+		
+		$.get(url)
+			.done(function(equipo) {
+				$('.modal-title').text("Editar Federacion");
+				$('#nombre-equipo').val(equipo.nombre);
+				$('#estadio-equipo').val(equipo.estadio);
+				$('#presupuesto-equipo').val(equipo.presupuesto)
+				$('#imagen-equipo').val(equipo.imagen)
+				$('#id-equipo').val(equipo.id)
+				$('#fede-equipo').val(equipo.fede.id);
+
+				$('#modal-equipo').modal('show');
+			})
+	})
 })
